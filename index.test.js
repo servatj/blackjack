@@ -17,4 +17,8 @@ describe('blackJack', () => {
   })
 
 
+  it('Should deal a hand with 5 cards when passing deck and 5') {
+    const deck = createDeck();
+  }
+
 })
