@@ -1,4 +1,4 @@
-const { createDeck, shuffleDeck, dealHand, computeThePoints } = require('./index')
+const { createDeck, shuffleDeck, dealHand, computeThePoints } = require('./index')()
 
 describe('blackJack', () => {
   it('should created deck of 52 cards', () => {
