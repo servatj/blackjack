@@ -1,6 +1,4 @@
 const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x)
-const pipe = (...fns) => x => fns.reduce((x, y) => f(y), x)
-
 
 const createDeck = () => {
   const suits = ['S', 'H', 'C', 'D']
@@ -25,8 +23,7 @@ const shuffleDeck = (deck) => {
 }
 
 const dealHand = (deck, n) => {
-  const hand = deck.splice(0, n)
-  return hand
+  return deck.splice(0, n)
 }
 
 const computeThePoints = (hand) => {
