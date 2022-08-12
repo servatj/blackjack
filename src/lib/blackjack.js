@@ -1,3 +1,11 @@
+
+let  dealerSum = 0;
+let  yourSum = 0;
+let  dealerAceCount = 0;
+let  yourAceCount = 0;
+let  hidden;
+let  canHit = true;
+
 export const shuffleDeck = (deck) => {
   for (let i = 0; i < deck.length; i++) {
     const numberRandom = Math.floor(Math.random() * deck.length);
@@ -33,7 +41,7 @@ export const createDeck = (deck) => {
   return deck;
 };
 
-const playTurnDealer = (deck, dealerSum, dealerAceCount) => {
+const playTurnDealer = (deck) => {
   let cardImg = document.createElement("img");
   let card = deck.pop();
   cardImg.src = "../cards/" + card.split("").join("-") + ".png";
@@ -42,7 +50,7 @@ const playTurnDealer = (deck, dealerSum, dealerAceCount) => {
   document.getElementById("dealer-cards").append(cardImg);
 };
 
-const playTurnPlayer = (deck, dealerSum, dealerAceCount) => {
+const playTurnPlayer = (deck) => {
   let cardImg = document.createElement("img");
   let card = deck.pop();
   cardImg.src = "../cards/" + card.split("").join("-") + ".png";
@@ -80,11 +88,11 @@ const pipe =
   (x) =>
     fns.reduce((y, f) => f(y), x);
 
-const hit = (canHit) => {
+const hit = (canHit, deck) => {
   if (!canHit) {
     return;
   } else {
-    playTurnPlayer();
+    playTurnPlayer(deck);
   }
 
   if (reduceAce(yourSum, yourAceCount) >= 21) {
@@ -118,21 +126,21 @@ const stand = (yourSum, dealerAceCount, yourAceCount) => {
   document.getElementById("results").innerText = message;
 };
 
-export const startGame = ({ deck, hidden, yourSum, yourAceCount, canHit, dealerSum, dealerAceCount }) => {
-  deck = pipe(createDeck, shuffleDeck)(deck);
+export const startGame = () => {
+  const deck = pipe(createDeck, shuffleDeck)([]);
   hidden = deck.pop();
   dealerSum += getValue(hidden);
   dealerAceCount += checkAce(hidden);
 
   while (dealerSum < 17) {
-    playTurnDealer(deck, dealerSum, dealerAceCount);
+    playTurnDealer(deck);
   }
 
   for (let i = 0; i < 2; i++) {
-    playTurnPlayer(deck, dealerSum, dealerAceCount);
+    playTurnPlayer(deck);
   }
 
-  document.getElementById("hit").addEventListener("click", hit(canHit));
-  document.getElementById("stand").addEventListener("click", stand(yourSum, dealerAceCount, yourAceCount));
+  document.getElementById("hit").addEventListener("click", () => hit(canHit, deck));
+  document.getElementById("stand").addEventListener("click", () => stand(yourSum, dealerAceCount, yourAceCount));
   document.getElementById("game").addEventListener("click", () => location.reload());
 };
