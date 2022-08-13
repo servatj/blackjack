@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "servor dist --reload & rollup -c -w",
+    "start": "servor dist & rollup -c",
+    "dev": "servor dist --reload --browse & rollup -c -w",
     "build": "rollup -c",
     "test": "jest --config jest.config.js"
   },
   "keywords": [],
-  "author": "Servatj <josep.servat@guidesmiths.com>",
+  "author": "Servatj <jservatlorca@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.10",
