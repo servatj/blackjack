@@ -1,9 +1,11 @@
 {
-  "name": "nearform",
+  "name": "blackjack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "servor dist --reload & rollup -c -w",
+    "build": "rollup -c",
     "test": "jest --config jest.config.js"
   },
   "keywords": [],
@@ -12,9 +14,14 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@rollup/plugin-html": "^0.2.4",
     "@testing-library/jest-dom": "^5.16.5",
     "babel-jest": "^28.1.3",
     "jest": "^28.1.3",
-    "jest-environment-jsdom": "^28.1.3"
+    "jest-environment-jsdom": "^28.1.3",
+    "rollup": "^2.77.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-watch-assets": "^1.0.1",
+    "servor": "^4.0.2"
   }
 }

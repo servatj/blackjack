@@ -1,4 +1,4 @@
-import {  startGame  } from "./lib/blackjack.js";
+import {  startGame  } from "./blackjack.js";
 
 const bootstrap = () => {
   console.log("Bootstrap");

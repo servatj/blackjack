@@ -45,7 +45,7 @@ export const createDeck = (deck) => {
 const playTurnDealer = (deck) => {
   let cardImg = document.createElement("img");
   let card = deck.pop();
-  cardImg.src = "../cards/" + card.split("").join("-") + ".png";
+  cardImg.src = "./assets/" + card.split("").join("-") + ".png";
   dealerSum += getValue(card);
   dealerAceCount += checkAce(card);
   document.getElementById("dealer-cards").append(cardImg);
@@ -54,7 +54,7 @@ const playTurnDealer = (deck) => {
 const playTurnPlayer = (deck) => {
   let cardImg = document.createElement("img");
   let card = deck.pop();
-  cardImg.src = "../cards/" + card.split("").join("-") + ".png";
+  cardImg.src = "./assets/" + card.split("").join("-") + ".png";
   document.getElementById("your-cards").append(cardImg);
   yourSum += getValue(card);
   yourAceCount += checkAce(card);
@@ -114,7 +114,7 @@ const stand = () => {
 
   canHit = false;
   document.getElementById("hidden").src =
-    "../cards/" + hidden.split("").join("-") + ".png";
+    "./assets/" + hidden.split("").join("-") + ".png";
 
   let message = "";
   if (yourSum > 21) {
