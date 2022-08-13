@@ -5,6 +5,7 @@ let  dealerAceCount = 0;
 let  yourAceCount = 0;
 let  hidden;
 let  canHit = true;
+let  canStand = true;
 
 export const shuffleDeck = (deck) => {
   for (let i = 0; i < deck.length; i++) {
@@ -54,9 +55,16 @@ const playTurnPlayer = (deck) => {
   let cardImg = document.createElement("img");
   let card = deck.pop();
   cardImg.src = "../cards/" + card.split("").join("-") + ".png";
+  document.getElementById("your-cards").append(cardImg);
   yourSum += getValue(card);
   yourAceCount += checkAce(card);
-  document.getElementById("your-cards").append(cardImg);
+  document.getElementById("your-sum").innerText = yourSum;
+  if(yourSum > 21) {
+    const message = 'You Lose';
+    canHit = false;
+    document.getElementById("results").innerText = message;
+    document.getElementById("stand").setAttribute('disabled', '')
+  }
 };
 
 const getValue = (card) => {
@@ -100,7 +108,7 @@ const hit = (canHit, deck) => {
   }
 };
 
-const stand = (yourSum, dealerAceCount, yourAceCount) => {
+const stand = () => {
   dealerSum = reduceAce(dealerSum, dealerAceCount);
   yourSum = reduceAce(yourSum, yourAceCount);
 

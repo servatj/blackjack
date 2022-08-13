@@ -11,19 +11,30 @@
 </head>
 
 <body>
-  <h2>Dealer: <span id="dealer-sum"></span></h2>
-  <div id="dealer-cards">
-    <img id="hidden" src="../cards/back.png">
+  <header class="header">
+    <div class="title">
+      Divance Games
+    </div>
+  </header>
+  <div class="board">
+    <div class="table">
+      <p id="results"></p>
+      <h2>Dealer: <span id="dealer-sum"></span></h2>
+      <div id="dealer-cards">
+        <img id="hidden" src="../cards/back.png">
+      </div>
+
+      <h2>You <span id="your-sum"></span></h2>
+      <div id="your-cards"></div>
+
+      <br>
+      <button class='button-54' id="hit">Hit</button>
+      <button class='button-54' id="stand">Stand</button>
+      <br>
+      <br>
+      <button class='button-54' id="game">Start New Game</button>
+    </div>
   </div>
-
-  <h2>You <span id="your-sum"></span></h2>
-  <div id="your-cards"></div>
-
-  <br>
-  <button id="hit">Hit</button>
-  <button id="stand">Stand</button>
-  <p id="results"></p>
-  <button id="game">Start New Game</button>
 </body>
 
 </html>
